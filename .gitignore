@@ -69,3 +69,5 @@ c/test_vosk_speaker
 c/oprofile_data
 c/model
 c/test.wav
+
+tests/models/

@@ -5,7 +5,7 @@ const fs = require("fs");
 const { Readable } = require("stream");
 const wav = require("wav");
 
-MODEL_PATH = "model"
+MODEL_PATH = ".../models/vosk-model-en-in-0.5"
 
 if (!fs.existsSync(MODEL_PATH)) {
     console.log("Please download the model from https://alphacephei.com/vosk/models and unpack as " + MODEL_PATH + " in the current folder.")

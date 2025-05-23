@@ -1,11 +1,14 @@
-var vosk = require('..')
+var vosk = require('vosk')
 
 const fs = require("fs");
 const { Readable } = require("stream");
 const wav = require("wav");
 
-MODEL_PATH = ".../models/vosk-model-en-in-0.5"
-FILE_NAME = "audio.wav"
+
+//MODEL_PATH = "models/vosk-model-small-en-in-0.4"
+//MODEL_PATH = "models/vosk-model-en-us-0.22-lgraph"
+MODEL_PATH = "models/vosk-model-en-in-0.5"
+FILE_NAME = "test.wav"
 
 if (!fs.existsSync(MODEL_PATH)) {
     console.log("Please download the model from https://alphacephei.com/vosk/models and unpack as " + MODEL_PATH + " in the current folder.")
@@ -26,6 +29,7 @@ wfReader.on('format', async ({ audioFormat, sampleRate, channels }) => {
         console.error("Audio file must be WAV format mono PCM.");
         process.exit(1);
     }
+    
     const rec = new vosk.Recognizer({model: model, sampleRate: sampleRate});
     rec.setMaxAlternatives(10);
     rec.setWords(true);
